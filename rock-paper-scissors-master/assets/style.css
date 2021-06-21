@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+
+:root {
+    /* Primary */
+    --scissorsGradient:linear-gradient (hsl(39, 89%, 49%) to hsl(40, 84%, 53%));
+    --paperGradient:linear-gradient( hsl(230, 89%, 62%) to hsl(230, 89%, 65%));
+    --rockGradient:linear-gradient( hsl(349, 71%, 52%) to hsl(349, 70%, 56%));
+    --lizardGradient:linear-gradient( hsl(261, 73%, 60%) to hsl(261, 72%, 63%));
+    --cyan:linear-gradient( hsl(189, 59%, 53%) to hsl(189, 58%, 57%));
+
+    /* Neutral */
+
+    --darkText: hsl(229, 25%, 31%);
+    --scoreText: hsl(229, 64%, 46%);
+    --headerOutline: hsl(217, 16%, 45%);
+
+    /* Background */
+
+    --radialGradient: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+* {
+    padding: 0;
+    border: 0;
+}
+
+html {
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed',  Helvetica, sans-serif;
+    min-height: 100vh;
+    color: var(--headerOutline);
+    font-size: 16px;
+    background: var(--radialGradient);
+    overflow-x: hidden;
+}
+
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
