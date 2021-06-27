@@ -41,7 +41,69 @@ body {
     overflow-x: hidden;
 }
 
+.game {
+    width: 80%;
+    height: 100vh;
+    border: 1px solid red;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    margin: auto;
+}
+.game__header {
+    border:5px solid var(--headerOutline);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
 
+.game__header__logo {
+    background-image: url(/images/logo.svg);
+   background-size: 80%;
+   width: 50%;
+   height: 100%;
+   background-repeat: no-repeat;
+
+}
+
+.game__header--score{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color:white;
+    border-radius: 5px;
+    padding: 10px;
+   
+}
+
+.game__header--score--title {
+    color:var(--scoreText);
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-top: 20px;
+}
+
+.game__header--score--number{
+    color: var(--darkText);
+    font-size: 2rem;
+    font-weight: 800;
+    padding-bottom: 15px;
+}
+
+@media (min-width:750px) {
+    .game {
+        width: 50%;
+    }
+    .game__header {
+        width: 100%;
+    }
+    
+}
 .attribution {
     font-size: 11px;
     text-align: center;
