@@ -14,9 +14,11 @@ function compPick() {
     return possibleOptions[randomIndex];
 }
 
-function getWinner(target) {
+function getWinner(playerPick) {
+    removeAllChoices();
     let computerPick = compPick();
-    switch (target) {
+    displayCurrentChoices(playerPick, computerPick);
+    switch (playerPick) {
         case 'paper':
             if (computerPick === 'rock') {
                 win();
@@ -46,6 +48,20 @@ function getWinner(target) {
             break;
         default:
             alert("There's a problem");
+    }
+}
+
+function displayCurrentChoices(playerPick, computerPick) {
+    let playerChoice = document.getElementById(playerPick);
+    let computerChoice = document.getElementById(computerPick);
+    playerChoice.style.display = 'block';
+    computerChoice.style.display = 'block';
+}
+
+function removeAllChoices() {
+    buttonElements = document.getElementsByClassName("game__choice");
+    for (let i = 0; i < buttonElements.length; i++) {
+        buttonElements[i].style.display = 'none';
     }
 }
 
