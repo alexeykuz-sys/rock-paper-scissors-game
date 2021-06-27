@@ -156,7 +156,84 @@ body {
   box-shadow: 0px 0px 0px 10px hsl(230deg 89% 65%);
 }
 
-@media (min-width: 768px) {
+/*footer*/
+/* .game__rules__button{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.game__rules__button--modal{
+    color: whitesmoke;
+    border: 3px solid var(--headerOutline);
+    border-radius: 8px;
+    padding: 10px 35px;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+} */
+
+/*modal*/
+/* 
+.modal__window{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow: auto;
+    background-color: #00000098;
+}
+
+.show{
+    display: flex; 
+}
+
+.modal__content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    background-color:whitesmoke;
+    width: 100%;
+    height: 100vh;
+    padding: 25px;
+}
+
+.modal__title__flex{
+    color: var(--darkText);
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    order: 1
+}
+
+.icon__flex{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 3
+}
+
+.rule__flex{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    order: 2
+}
+
+.rule__svg{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+@media (min-width: 750px) {
   .game {
     width: 50%;
   }
@@ -168,8 +245,34 @@ body {
     width: 100px;
     height: 100px;
   }
-
+.game__block--wrapper {
+    width: 64%;
+    background-size: contain; 
 }
+
+/*modals desktop*/
+/* .modal__content{
+  width: 30%;
+  min-width: 350px;
+  height: auto;
+  border-radius: 5px;
+}
+.modal__title__flex{
+  width: 80%;
+  text-align: left;
+}
+
+.icon__flex{
+  width: 20%;
+  justify-content: flex-end;
+  align-items: center;
+  order: 2
+}
+
+.rule__flex{
+  order: 3;
+}
+} */
 
 .attribution {
   font-size: 11px;
@@ -178,3 +281,4 @@ body {
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
+
