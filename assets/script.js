@@ -73,14 +73,14 @@ function getWinner(playerPick) {
 function displayCurrentChoices(playerPick, computerPick) {
     let playerChoice = document.getElementById(playerPick);
     let computerChoice = document.getElementById(computerPick);
-    playerChoice.style.display = 'block';
-    computerChoice.style.display = 'block';
+    playerChoice.style.opacity = '1';
+    computerChoice.style.opacity = '1';
 }
 
 function removeAllChoices() {
     buttonElements = document.getElementsByClassName("game__block--choice");
     for (let i = 0; i < buttonElements.length; i++) {
-        buttonElements[i].style.display = 'none';
+        buttonElements[i].style.opacity = '0';
     }
 }
 
@@ -89,8 +89,10 @@ function win() {
     saveToLocalStorage();
     updateScore();
     gameResult.innerHTML = 
-    `<h1>YOU WON</h1>
-    <button id="play-again">Play Again</button>`;
+    `<div>
+        <h1>YOU WON</h1>
+        <button id="play-again">Play Again</button>
+    </div>`;
     const playAgainButton = document.querySelector('#play-again');
     playAgainButton.addEventListener('click', () => {
         location.reload();
@@ -106,8 +108,10 @@ function lose() {
     saveToLocalStorage();
     updateScore();
     gameResult.innerHTML = 
-    `<h1>YOU LOST</h1>
-    <button id="play-again">Play Again</button>`;
+    `<div>
+        <h1>YOU LOST</h1>
+        <button id="play-again">Play Again</button>
+    </div>`;
     const playAgainButton = document.querySelector('#play-again');
     playAgainButton.addEventListener('click', () => {
         location.reload();
@@ -116,8 +120,10 @@ function lose() {
 
 function draw() {
     gameResult.innerHTML = 
-    `<h1>IT'S A DRAW</h1>
-    <button id="play-again">Play Again</button>`;
+    `<div>
+        <h1>IT'S A DRAW</h1>
+        <button id="play-again">Play Again</button>
+    </div>`;
     const playAgainButton = document.querySelector('#play-again');
     playAgainButton.addEventListener('click', () => {
         location.reload();
