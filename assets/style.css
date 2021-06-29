@@ -159,14 +159,26 @@ body {
 
 .game__rules{
   position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    align-items: center;
 }
-.game__rules__button {
-  display: flex;
-  justify-content: center;
-  position: relative;
+#game__rules--button {
+  width: 97px;
+    height: 43px;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 2px;
+    background-color: transparent;
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    /* left: 50%; */
 }
 
-.game__rules__button--modal {
+/* .game__rules__button--modal {
   color: whitesmoke;
   border: 3px solid var(--headerOutline);
   border-radius: 8px;
@@ -174,30 +186,33 @@ body {
   display: inline-block;
   text-transform: uppercase;
   text-align: center;
-}
-*/
+} */
+
 
 /*modal*/
 
 .game__rules--modal {
   display: none;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  position: fixed;
   z-index: 1;
-  left: 0;
-  top: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   overflow: auto;
-  background-color: #00000098;
+  background-color: white;
 }
 
-  /* .modal__window.show {
+  /* .game__rules--modal.show {
     display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
   } */
 
-.modal__content {
+/* .modal__content {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -235,9 +250,9 @@ body {
   display: block;
   width: fit-content;
   margin: 0 auto;
-}
+} */
 
-@media (min-width: 750px) {
+@media (min-width: 950px) {
   .game {
     width: 50%;
   }
@@ -250,12 +265,24 @@ body {
     height: 100px;
   }
   .game__block--wrapper {
-    width: 64%;
+    /* width: 44%; */
     background-size: contain;
   }
 
   /*modals desktop*/
-  .modal__content {
+
+  #game__rules--button {
+    position: absolute;
+    bottom: 20px;
+    right: 0%;
+  }
+
+.game__rules--modal {
+  width: auto;
+  padding: 50px;
+}
+
+  /* .modal__content {
     width: 30%;
     min-width: 350px;
     height: auto;
@@ -275,7 +302,7 @@ body {
 
   .rule__flex {
     order: 3;
-  }
+  } */
 }
 
 .attribution {
