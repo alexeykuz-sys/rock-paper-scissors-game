@@ -61,8 +61,6 @@ body {
   padding: 10px;
   justify-content: space-between;
   border-radius: 10px;
-  position: absolute;
-  top: 20px;
 }
 
 .game__header__logo {
