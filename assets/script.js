@@ -2,6 +2,9 @@ const gameBlock = document.querySelector('.game__block--wrapper');
 const gameResult = document.querySelector('.game__result');
 const scoreNumber = document.querySelector('.game__header--score--number');
 const storedScore = localStorage.getItem("userScore");
+const rulesBtn = document.getElementById("game__rules--button");
+const closeBtn = document.querySelector(".modal__rules__title");
+const modal = document.querySelector('.game__rules--modal');
 let userScore;
 
 window.onload = () => {
@@ -131,9 +134,11 @@ function draw() {
 }
 
 /*------Modal window-----*/
-function toggle_modal(){
-    document.getElementById("modal-rules").classList.toggle("show");
+
+
+const modalHandler = () => {
+    modal.classList.toggle('show')
+
 }
-  
-document.getElementById("rule-button").onclick = function() {toggle_modal()};
-document.getElementById("close__button").onclick = function() {toggle_modal()};
+rulesBtn.addEventListener('click', modalHandler);
+closeBtn.addEventListener('click', modalHandler);
