@@ -41,7 +41,7 @@ body {
 }
 
 .game {
-  width: 80%;
+  width: 100%;
   height: 100vh;
   padding: 20px;
   flex: 1;
@@ -97,24 +97,50 @@ body {
 }
 
 /* game block */
+.game__block{
+  display: none;
+}
 
-.game__block {
+.game__block.active {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+  'a'
+  'b';
+  grid-template-rows: 50% 50% 1fr;
+  grid-template-columns:50% 50%;
+  
+  /* grid-gap: 10px; */
+  border: 2px solid red;
+  background-image: url('/images/bg-triangle.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
-.game__block--wrapper {
+
+.game__block__pick{
+  display: none;
+}
+
+
+/* .game__block--wrapper {
   position: relative;
+  
+} */
+
+
+.game__block--choice {
+  border: 3px solid yellow;
 }
 
-.game__block--wrapper::before {
-  content: url(/images/bg-triangle.svg);
-}
-.game__block--choice {
+#rock {
+  background-image: url(/images/icon-rock.svg);
+  box-shadow: 0px 0px 0px 10px hsl(349deg 70% 56%);
+  /* top: -36px;
+  left: -18px;
+  position: absolute; */
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
@@ -127,30 +153,52 @@ body {
   background-color: #ffff;
 }
 
-#rock {
-  background-image: url(/images/icon-rock.svg);
-  box-shadow: 0px 0px 0px 10px hsl(349deg 70% 56%);
-  top: -36px;
-  left: -18px;
-  position: absolute;
-}
-
 #scissors {
   background-image: url(/images/icon-scissors.svg);
-  position: absolute;
+  /* position: absolute;
   top: -36px;
-  right: -18px;
+  right: -18px; */
   box-shadow: 0px 0px 0px 10px hsl(40deg 84% 53%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #ffff;
 }
 
 #paper {
   background-image: url(/images/icon-paper.svg);
-  position: absolute;
+  /* position: absolute;
   bottom: 0px;
-  right: 36%;
+  right: 36%; */
   box-shadow: 0px 0px 0px 10px hsl(230deg 89% 65%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #ffff;
 }
 
+.game__block__pick.active {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  border: rebeccapurple;
+}
 /*footer*/
 
 .game__rules {

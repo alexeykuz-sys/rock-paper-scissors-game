@@ -31,13 +31,31 @@
           <div class="game__header--score--number"></div>
         </div>
       </div>
-      <div class="game__block">
-        <div class="game__block--wrapper">
-        <div class="game__block--choice" id="rock"></div>
-        <div class="game__block--choice" id="paper"></div>
-        <div class="game__block--choice" id="scissors"></div>
-
+      <div class="game__block active">
+        
+          <div class="game__block--choice"  data-name="rock">
+            <div id="rock"></div>
+          </div>
+          <div class="game__block--choice" data-name="paper">
+            <!-- <div id="paper"></div> -->
+          </div>
+          <div class="game__block--choice" data-name="scissors">
+            <!-- <div id="scissors"></div> -->
+          </div>
+        
       </div>
+      <div class="game__block__pick">
+        <div class="game__block__pick--player">
+          <div class="" id="rock" data-name="rock"></div>
+          <h3>You picked</h3>
+        </div>
+        <div class="game__block__pick--player">
+          <div class="" id="rock" data-name="rock"></div>
+          <h3>The House picked</h3>
+        </div>
+        
+      </div>
+
       <div class="game__result">
         <div class="game__result--lose"></div>
         <div class="game__result--win"></div>
