@@ -48,7 +48,7 @@ body {
   display: flex;
   margin: auto;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   position: relative;
 }
@@ -61,6 +61,8 @@ body {
   padding: 10px;
   justify-content: space-between;
   border-radius: 10px;
+  position: absolute;
+  top: 5px;
 }
 
 .game__header__logo {
@@ -96,6 +98,17 @@ body {
   padding-bottom: 15px;
 }
 
+/* Reset button */
+.reset__button{
+  padding: 10px;
+  border-radius: 10px;
+  width: auto;
+  text-transform: uppercase;
+  position: absolute;
+  top: 150px;
+  right: 0;
+}
+
 /* game block */
 .game__block{
   display: none;
@@ -103,27 +116,35 @@ body {
 
 .game__block.active {
   width: 100%;
-  height: 100%;
   display: grid;
-  grid-template-areas:
-  'a'
-  'b';
-  grid-template-rows: 50% 50% 1fr;
-  grid-template-columns:50% 50%;
-  
-  /* grid-gap: 10px; */
-  border: 2px solid red;
-  background-image: url('/images/bg-triangle.svg');
-  background-repeat: no-repeat;
-  background-position: center;
+  grid-template-columns: repeat(3 , 1fr);
+  grid-template-rows: repeat(2, 200px);
+  /* row-gap: 1rem; */
+  background: url("/images/bg-triangle.svg") no-repeat center/50%;
+  position: absolute;
+  top:250px;
+  left: 0;
+}
 
+.choice-1 {
+  grid-column-start: 1;
+   grid-row-start: 1;
+   grid-row-end: 2;
 }
 
 
-.game__block__pick{
-  display: none;
+.choice-2 {
+  grid-column-start: 3;
+   grid-row-start: 1;
+   grid-row-end: 2;
 }
 
+
+.choice-3 {
+  grid-column-start: 2;
+   grid-row-start: 2;
+   grid-row-end: 2;
+}
 
 /* .game__block--wrapper {
   position: relative;
@@ -132,7 +153,13 @@ body {
 
 
 .game__block--choice {
-  border: 3px solid yellow;
+  /* border: 3px solid yellow; */
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #rock {
@@ -144,13 +171,14 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #ffff;
+  cursor: pointer;
 }
 
 #scissors {
@@ -162,13 +190,15 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #ffff;
+  cursor: pointer;
+  
 }
 
 #paper {
@@ -180,29 +210,97 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #ffff;
+ cursor: pointer;
+}
+
+
+/* Game pick */
+
+
+.game__block__pick{
+  display: none;
 }
 
 .game__block__pick.active {
   width: 100%;
-  height: 100%;
+    /* height: 100%; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 250px);
+    position: absolute;
+    top: 200px;
+    left: 0;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.game__block__pick--player{
+  grid-column-start: 1;
+   grid-row-start: 1;
+   grid-row-end: 2;
+}
+.game__block__pick--comp{
+  grid-column-start: 3;
+   grid-row-start: 1;
+   grid-row-end: 2;
+}
+
+.game__block__pick--player,
+.game__block__pick--comp{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: relative;
-  border: rebeccapurple;
+}
+
+.game__block__pick--player h3,
+.game__block__pick--comp h3{
+  text-align: center;
+  margin: 40px;
+  color:white;
+  text-transform: uppercase;
+}
+
+.game__block__pick__result {
+  display: none;
+} 
+.game__block__pick__result.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.game__block__pick__result h3 {
+  text-align: center;
+  margin: 70px;
+  color:white;
+  text-transform: uppercase;
+}
+
+.game__block__pick__result__button {
+  padding: 10px;
+  border-radius: 10px;
+  width: auto;
+  text-transform: uppercase;
+}
+
+.game__block__pick__result__button:hover{
+  color: red;
 }
 /*footer*/
 
 .game__rules {
-  position: relative;
+  position: absolute;
+  bottom: 15px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -269,14 +367,6 @@ body {
   }
   .game__header {
     width: 100%;
-  }
-
-  .game__block--choice {
-    width: 100px;
-    height: 100px;
-  }
-  .game__block--wrapper {
-    background-size: contain;
   }
 
   /*modals desktop*/

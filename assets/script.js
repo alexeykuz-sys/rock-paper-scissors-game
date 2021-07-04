@@ -1,158 +1,119 @@
-const gameBlock = document.querySelector('.game__block');
-const gameResult = document.querySelector('.game__result');
-const scoreNumber = document.querySelector('.game__header--score--number');
-const storedScore = localStorage.getItem("userScore");
+const gameBlock = document.querySelector(".game__block");
+const gameResult = document.querySelector(".game__result");
+const scoreNumber = document.querySelector(".game__header--score--number");
+// const storedScore = localStorage.getItem("userScore");
 const rulesBtn = document.getElementById("game__rules--button");
 const closeBtn = document.querySelector(".modal__rules__title");
-const modal = document.querySelector('.game__rules--modal');
-const gamePick = document.querySelector('.game__block__pick')
-let userScore;
-const userPick = ['scissors', 'rock', 'paper']
-const gameChoice = document.querySelectorAll('.game__block--choice')
+const modal = document.querySelector(".game__rules--modal");
+const gamePick = document.querySelector(".game__block__pick");
+const playerPick = document.querySelector('.game__block__pick--player');
+const compPick = document.querySelector('.game__block__pick--comp');
+// let userScore;
+let selected;
+let randCompPick;
+const possibleOptions = document.querySelectorAll('[data-name]');
+// const gameChoice = document.querySelectorAll(".game__block--choice");
+const playAgainButton = document.querySelector('.game__block__pick__result__button')
+const resetBtn = document.querySelector('.reset__button')
+// startScore();
 
-gameChoice.forEach(choice => choice.addEventListener('click', (event)=>{
-    let choiceName = event.target.dataset.name;
-    if(choiceName){
-        gameBlock.classList.remove('active');
-        gamePick.classList.add('active')
+possibleOptions.forEach((choice) =>
+choice.addEventListener("click", (event) => {
+    gameBlock.classList.remove("active");
+    gamePick.classList.add("active");
+    playerChoice(event.target)
+    computerPick()
+    selected=choice.dataset.name
+    getWinner()
+})
+);
+
+const playerChoice = (el) => {
+    return playerPick.appendChild(el)
+}
+
+compChoice = possibleOptions[getRandom(3)]
+randCompPick = compChoice.id
+
+
+const computerPick = () => {
+    return compPick.appendChild(compChoice);
+}
+
+
+function getRandom(n) {
+    let l = Math.floor(Math.random() * n);
+    return l;
+}
+
+const getWinner = () => {
+    if (selected == randCompPick) {
+        gameResult.innerHTML = "DRAWN";
+    } else if (selected == "paper" && randCompPick == "scissors") {
+        addScore(-1);
+        gameResult.innerHTML = "YOU LOSE";
+    } else if (selected == "scissors" && randCompPick == "paper") {
+        addScore(1);
+        gameResult.innerHTML = "YOU WIN";
+    } else if (selected == "scissors" && randCompPick == "rock") {
+        addScore(-1);
+        gameResult.innerHTML = "YOU LOSE";
+    } else if (selected == "rock" && randCompPick == "scissors") {
+        addScore(1);
+        gameResult.innerHTML = "YOU WIN";
+    } else if (selected == "rock" && randCompPick == "paper") {
+        addScore(-1);
+        gameResult.innerHTML = "YOU LOSE";
+    } else if (selected == "paper" && randCompPick == "rock") {
+        addScore(1);
+        gameResult.innerHTML = "YOU WIN";
     }
-    console.log(event.target.dataset.name);
-}))
+}
+getWinner()
 
 
 
-// window.onload = () => {
-//     if (localStorage.userScore) {
-//         userScore = storedScore;
-//     } else {
-//         userScore = 0;
-//     }
-//     updateScore();
-// }
+function startScore() {
+    if (localStorage.score == undefined) {
+        localStorage.setItem('score', '0')
+    //   localStorage.score = 0;
+    } else {
+      scoreNumber.textContent = localStorage.score;
+    }
+  }
+  
+  console.log(window)
+  function addScore(n) {
+    let tempScore = parseInt(localStorage.score);
+    tempScore = tempScore + n;
+    localStorage.score = tempScore;
+    scoreText.textContent = localStorage.score;
+  }
 
-// function updateScore() {
-//     scoreNumber.innerHTML = `${userScore}`;
-// }
+/*---Resets the game---*/
 
-// const saveToLocalStorage = () => {
-//     localStorage.setItem("userScore", userScore);
-// }
+const playAgain = () => {
+    location.reload();
+}
 
-// gameBlock.addEventListener('click', event => {
-//     if (event.target.className === 'game__block--choice') {
-//         getWinner(event.target.id);
-//     }
-// });
-
-// function compPick() {
-//     possibleOptions = ['rock', 'paper', 'scissors'];
-//     randomIndex = Math.floor(Math.random() * possibleOptions.length);
-//     return possibleOptions[randomIndex];
-// }
-
-// function getWinner(playerPick) {
-//     removeAllChoices();
-//     let computerPick = compPick();
-//     displayCurrentChoices(playerPick, computerPick);
-//     switch (playerPick) {
-//         case 'paper':
-//             if (computerPick === 'rock') {
-//                 win();
-//             } else if (computerPick === 'scissors') {
-//                 lose();
-//             } else {
-//                 draw();
-//             }
-//             break;
-//         case 'rock':
-//             if (computerPick === 'scissors') {
-//                 win();
-//             } else if (computerPick === 'paper') {
-//                 lose();
-//             } else {
-//                 draw();
-//             }
-//             break;
-//         case 'scissors':
-//             if (computerPick === 'paper') {
-//                 win();
-//             } else if (computerPick === 'rock') {
-//                 lose();
-//             } else {
-//                 draw();
-//             }
-//             break;
-//         default:
-//             alert("There's a problem");
-//     }
-// }
-
-// function displayCurrentChoices(playerPick, computerPick) {
-//     let playerChoice = document.getElementById(playerPick);
-//     let computerChoice = document.getElementById(computerPick);
-//     playerChoice.style.opacity = '1';
-//     computerChoice.style.opacity = '1';
-// }
-
-// function removeAllChoices() {
-//     buttonElements = document.getElementsByClassName("game__block--choice");
-//     for (let i = 0; i < buttonElements.length; i++) {
-//         buttonElements[i].style.opacity = '0';
-//     }
-// }
-
-// function win() {
-//     userScore++;
-//     saveToLocalStorage();
-//     updateScore();
-//     gameResult.innerHTML = 
-//     `<div>
-//         <h1>YOU WON</h1>
-//         <button id="play-again">Play Again</button>
-//     </div>`;
-//     const playAgainButton = document.querySelector('#play-again');
-//     playAgainButton.addEventListener('click', () => {
-//         location.reload();
-//     });
-// }
-
-// function lose() {
-//     if (userScore > 0) {
-//         userScore--;
-//     } else {
-//         useScore = 0;
-//     }
-//     saveToLocalStorage();
-//     updateScore();
-//     gameResult.innerHTML = 
-//     `<div>
-//         <h1>YOU LOST</h1>
-//         <button id="play-again">Play Again</button>
-//     </div>`;
-//     const playAgainButton = document.querySelector('#play-again');
-//     playAgainButton.addEventListener('click', () => {
-//         location.reload();
-//     });
-// }
-
-// function draw() {
-//     gameResult.innerHTML = 
-//     `<div>
-//         <h1>IT'S A DRAW</h1>
-//         <button id="play-again">Play Again</button>
-//     </div>`;
-//     const playAgainButton = document.querySelector('#play-again');
-//     playAgainButton.addEventListener('click', () => {
-//         location.reload();
-//     });
-// }
+playAgainButton.addEventListener('click', playAgain);
 
 /*------Modal window-----*/
 
-
 const modalHandler = () => {
-    modal.classList.toggle('show')
+  modal.classList.toggle("show");
+};
+rulesBtn.addEventListener("click", modalHandler);
+closeBtn.addEventListener("click", modalHandler);
 
+/*---------reset button-------*/
+
+
+const resetHandler = () =>{
+    localStorage.clear();
+    selected = null;
+    randCompPick = null;
+    
 }
-rulesBtn.addEventListener('click', modalHandler);
-closeBtn.addEventListener('click', modalHandler);
+
+resetBtn.addEventListener('click', resetHandler)
