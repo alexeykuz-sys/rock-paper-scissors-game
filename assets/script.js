@@ -87,7 +87,7 @@ function startScore() {
     let tempScore = parseInt(localStorage.score);
     tempScore = tempScore + n;
     localStorage.score = tempScore;
-    scoreText.textContent = localStorage.score;
+    scoreNumber.textContent = localStorage.score;
   }
 
 /*---Resets the game---*/
