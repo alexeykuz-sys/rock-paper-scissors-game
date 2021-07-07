@@ -11,7 +11,7 @@ const compPick = document.querySelector('.game__block__pick--comp');
 let selected;
 let randCompPick;
 const possibleOptions = document.querySelectorAll('[data-name]');
-// const gameChoice = document.querySelectorAll(".game__block--choice");
+const gamePickResult = document.querySelector(".game__block__pick__result");
 const playAgainButton = document.querySelector('.game__block__pick__result__button')
 const resetBtn = document.querySelector('.reset__button')
 startScore();
@@ -21,7 +21,8 @@ choice.addEventListener("click", (event) => {
     gameBlock.classList.remove("active");
     gamePick.classList.add("active");
     playerChoice(event.target)
-    computerPick()
+    setTimeout(function(){computerPick()}, 1000);
+    
     selected=choice.dataset.name
     getWinner()
 })
@@ -44,6 +45,8 @@ function getRandom(n) {
     let l = Math.floor(Math.random() * n);
     return l;
 }
+
+
 
 const getWinner = () => {
     if (selected == randCompPick) {
@@ -68,7 +71,13 @@ const getWinner = () => {
         gameResult.innerHTML = "YOU WIN";
     }
 }
+
 getWinner()
+
+setTimeout(()=>{
+    gamePickResult.classList.add('active')
+},3000);
+
 
 /*-----Local storage----*/
 
