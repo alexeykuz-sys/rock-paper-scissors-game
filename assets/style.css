@@ -245,8 +245,9 @@ body {
   grid-template-columns: repeat(3, 120px);
   grid-template-rows: repeat(1, 250px);
   position: absolute;
-  /* top: 200px;
-  left: 0; */
+  top: 150px;
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
   justify-items: center;
 }
@@ -261,6 +262,16 @@ body {
   grid-column-start: 3;
   grid-row-start: 1;
   grid-row-end: 2;
+  animation: fadein 1s ease-in alternate;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .game__block__pick--player,
@@ -269,12 +280,15 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 .game__block__pick--player h3,
 .game__block__pick--comp h3{
   text-align: center;
-  margin: 40px;
+  margin-bottom: 40px;
   color:white;
   text-transform: uppercase;
 }
@@ -287,6 +301,20 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: absolute;
+  /* top: 250px; */
+  /* animation: slidein 1s ease-in-out; */
+  /* transform: translateY(-150px); */
+}
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .game__block__pick__result h3 {
@@ -402,8 +430,8 @@ body {
 
   #game__rules--button {
     position: absolute;
-    bottom: 20px;
-    right: 0%;
+    bottom: 60px;
+    right: 350px;
   }
 
   .game__rules--modal {
