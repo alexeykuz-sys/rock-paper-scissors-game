@@ -20,6 +20,7 @@ possibleOptions.forEach((choice) =>
 choice.addEventListener("click", (event) => {
     gameBlock.classList.remove("active");
     gamePick.classList.add("active");
+    console.log(event.target)
     playerChoice(event.target)
     setTimeout(function(){computerPick()}, 1000);
     
@@ -38,6 +39,7 @@ randCompPick = compChoice.id
 
 const computerPick = () => {
     return compPick.appendChild(compChoice);
+    
 }
 
 
@@ -51,32 +53,57 @@ function getRandom(n) {
 const getWinner = () => {
     if (selected == randCompPick) {
         gameResult.innerHTML = "DRAWN";
+        gamePickResult.classList.add('active');
     } else if (selected == "paper" && randCompPick == "scissors") {
-        addScore(-1);
+        setTimeout(()=>{
+            addScore(-1);  
+            gamePickResult.classList.add('active');
+        }, 3000);
         gameResult.innerHTML = "YOU LOSE";
+        compPick.classList.add('effect');
     } else if (selected == "scissors" && randCompPick == "paper") {
-        addScore(1);
+        setTimeout(()=>{
+            addScore(1);
+            gamePickResult.classList.add('active');  
+        }, 3000);
         gameResult.innerHTML = "YOU WIN";
+        playerPick.classList.add('effect')
     } else if (selected == "scissors" && randCompPick == "rock") {
-        addScore(-1);
+        setTimeout(()=>{
+            addScore(-1);
+            gamePickResult.classList.add('active'); 
+        }, 3000);
         gameResult.innerHTML = "YOU LOSE";
+        compPick.classList.add('effect')
     } else if (selected == "rock" && randCompPick == "scissors") {
-        addScore(1);
+        setTimeout(()=>{
+            addScore(1); 
+            gamePickResult.classList.add('active'); 
+        }, 3000);
         gameResult.innerHTML = "YOU WIN";
+        playerPick.classList.add('effect')
     } else if (selected == "rock" && randCompPick == "paper") {
-        addScore(-1);
+        setTimeout(()=>{
+            addScore(-1);  
+            gamePickResult.classList.add('active');
+        }, 3000);
         gameResult.innerHTML = "YOU LOSE";
+        compPick.classList.add('effect')
     } else if (selected == "paper" && randCompPick == "rock") {
-        addScore(1);
+        setTimeout(()=>{
+            addScore(1);  
+            gamePickResult.classList.add('active');
+        }, 3000);
         gameResult.innerHTML = "YOU WIN";
+        playerPick.classList.add('effect')
     }
 }
 
 getWinner()
 
-setTimeout(()=>{
-    gamePickResult.classList.add('active')
-},3000);
+// setTimeout(()=>{
+//     gamePickResult.classList.add('active');
+// },3000);
 
 
 /*-----Local storage----*/
@@ -101,6 +128,7 @@ function addScore(n) {
 /*---Resets the game---*/
 
 const playAgain = () => {
+    // gamePickResult.classList.remove('active');
     location.reload();
 }
 
