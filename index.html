@@ -33,29 +33,39 @@
       </div>
       <div class="game__block active">
         
-          <div class="game__block--choice choice-1"  >
-            <div id="rock" data-name="rock"></div>
+          <div class="game__block--choice choice-1">
+            <span class="img-wrapper">
+              <img src="./images/icon-rock.svg" alt="rock" data-name="rock" id="rock">
+            </span>
           </div>
           <div class="game__block--choice choice-2" >
-            <div id="paper" data-name="paper"></div>
+            <span class="img-wrapper">
+              <img src="./images/icon-paper.svg" alt="paper" data-name="paper" id="paper">
+            </span>
           </div>
           <div class="game__block--choice choice-3" >
-            <div id="scissors" data-name="scissors"></div>
+            <span class="img-wrapper">
+              <img src="./images/icon-scissors.svg" alt="scissors" data-name="scissors" id="scissors">
+            </span>
           </div>
         
       </div>
       <div class="game__block__pick">
         <div class="game__block__pick__playerblock">
           <h3>You picked</h3>
-          <div class="game__block__pick--player"></div>
+          <div class="game__block__pick--player">
+            <span class="img-wrapper">
+              <img src="./images/icon-paper.svg" alt="paper" class="paper" id="userImg">
+            </span>
+          </div>
         </div>
-        <!-- <div class="game__block__pick__result">
-          <h3 class="game__result"></h3>
-          <button class="game__block__pick__result__button">Play Again</button>
-        </div> -->
         <div class="game__block__pick__compblock ">
           <h3>The House picked</h3>
-          <div class="game__block__pick--comp"></div>
+          <div class="game__block__pick--comp">
+            <div class="img-wrapper comp-fadein">
+              <img src="./images/icon-rock.svg" alt="rock" class="rock" id="compImg">
+            </div>
+          </div>
         </div>
       </div>
       <div class="game__block__pick__result">
@@ -68,7 +78,7 @@
       <div  class="game__rules--modal">
         <div id="modal-rules" class="games__rules--modal-window">
             <div class="modal__rules__title">Rules</div>
-            <img class="modal-rules__img" src="images/image-rules.svg">
+            <img class="modal-rules__img" src="images/image-rules.svg" alt="game rules">
         </div>
       </div>
     </div>

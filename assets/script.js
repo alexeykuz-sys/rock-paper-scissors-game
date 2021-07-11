@@ -1,44 +1,47 @@
 const gameBlock = document.querySelector(".game__block");
 const gameResult = document.querySelector(".game__result");
 const scoreNumber = document.querySelector(".game__header--score--number");
-// const storedScore = localStorage.getItem("userScore");
 const rulesBtn = document.getElementById("game__rules--button");
 const closeBtn = document.querySelector(".modal__rules__title");
 const modal = document.querySelector(".game__rules--modal");
 const gamePick = document.querySelector(".game__block__pick");
 const playerPick = document.querySelector('.game__block__pick--player');
-const compPick = document.querySelector('.game__block__pick--comp');
+let compPick = document.querySelector('.game__block__pick--comp');
 let selected;
 let randCompPick;
 const possibleOptions = document.querySelectorAll('[data-name]');
 const gamePickResult = document.querySelector(".game__block__pick__result");
-const playAgainButton = document.querySelector('.game__block__pick__result__button')
-const resetBtn = document.querySelector('.reset__button')
+const playAgainButton = document.querySelector('.game__block__pick__result__button');
+const userImage = document.getElementById('userImg');
+const compImage = document.getElementById('compImg');
+
 startScore();
 
 possibleOptions.forEach((choice) =>
 choice.addEventListener("click", (event) => {
     gameBlock.classList.remove("active");
     gamePick.classList.add("active");
-    console.log(event.target)
-    playerChoice(event.target)
-    setTimeout(function(){computerPick()}, 1000);
-    
-    selected=choice.dataset.name
-    getWinner()
+    console.log(event.target);
+    playerChoice(event.target);
+    computerPick(event.target);
+    selected=choice.dataset.name;
+    getWinner();
 })
 );
 
 const playerChoice = (el) => {
-    return playerPick.appendChild(el)
-}
+    userImage.src = `./images/icon-${el.id}.svg`;
+    userImage.className.replace(`${el.id}`);    
+};
 
-compChoice = possibleOptions[getRandom(3)]
-randCompPick = compChoice.id
+let compChoice = possibleOptions[getRandom(3)];
+randCompPick = compChoice.id;
 
 
-const computerPick = () => {
-    return compPick.appendChild(compChoice);
+const computerPick = (el) => {
+    console.log(compChoice.id);
+    compImage.src = `./images/icon-${compChoice.id}.svg`;
+    compImage.className.replace(`${el.id}`);
     
 }
 
@@ -52,7 +55,7 @@ function getRandom(n) {
 
 const getWinner = () => {
     if (selected == randCompPick) {
-        gameResult.innerHTML = "DRAWN";
+        gameResult.innerHTML = "DRAW";
         gamePickResult.classList.add('active');
     } else if (selected == "paper" && randCompPick == "scissors") {
         setTimeout(()=>{
@@ -67,44 +70,39 @@ const getWinner = () => {
             gamePickResult.classList.add('active');  
         }, 3000);
         gameResult.innerHTML = "YOU WIN";
-        playerPick.classList.add('effect')
+        playerPick.classList.add('effect');
     } else if (selected == "scissors" && randCompPick == "rock") {
         setTimeout(()=>{
             addScore(-1);
             gamePickResult.classList.add('active'); 
         }, 3000);
         gameResult.innerHTML = "YOU LOSE";
-        compPick.classList.add('effect')
+        compPick.classList.add('effect');
     } else if (selected == "rock" && randCompPick == "scissors") {
         setTimeout(()=>{
             addScore(1); 
             gamePickResult.classList.add('active'); 
         }, 3000);
         gameResult.innerHTML = "YOU WIN";
-        playerPick.classList.add('effect')
+        playerPick.classList.add('effect');
     } else if (selected == "rock" && randCompPick == "paper") {
         setTimeout(()=>{
             addScore(-1);  
             gamePickResult.classList.add('active');
         }, 3000);
         gameResult.innerHTML = "YOU LOSE";
-        compPick.classList.add('effect')
+        compPick.classList.add('effect');
     } else if (selected == "paper" && randCompPick == "rock") {
         setTimeout(()=>{
             addScore(1);  
             gamePickResult.classList.add('active');
         }, 3000);
         gameResult.innerHTML = "YOU WIN";
-        playerPick.classList.add('effect')
+        playerPick.classList.add('effect');
     }
-}
+};
 
-getWinner()
-
-// setTimeout(()=>{
-//     gamePickResult.classList.add('active');
-// },3000);
-
+getWinner();
 
 /*-----Local storage----*/
 
@@ -128,9 +126,8 @@ function addScore(n) {
 /*---Resets the game---*/
 
 const playAgain = () => {
-    // gamePickResult.classList.remove('active');
     location.reload();
-}
+};
 
 playAgainButton.addEventListener('click', playAgain);
 
