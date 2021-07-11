@@ -301,7 +301,7 @@ body {
     margin: 1.5rem;
     width: 22rem;
     height: 22rem;
-    animation: fadein 5s ease-in-out;
+    animation: fadein 1s ease-in-out;
 }
 
 @keyframes fadein {

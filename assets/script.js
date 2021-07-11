@@ -21,7 +21,6 @@ possibleOptions.forEach((choice) =>
 choice.addEventListener("click", (event) => {
     gameBlock.classList.remove("active");
     gamePick.classList.add("active");
-    console.log(event.target);
     playerChoice(event.target);
     computerPick(event.target);
     selected=choice.dataset.name;
@@ -55,48 +54,50 @@ function getRandom(n) {
 
 const getWinner = () => {
     if (selected == randCompPick) {
+        setTimeout(() =>{
         gameResult.innerHTML = "DRAW";
         gamePickResult.classList.add('active');
+        },1500);
     } else if (selected == "paper" && randCompPick == "scissors") {
         setTimeout(()=>{
             addScore(-1);  
             gamePickResult.classList.add('active');
-        }, 3000);
+        }, 1500);
         gameResult.innerHTML = "YOU LOSE";
         compPick.classList.add('effect');
     } else if (selected == "scissors" && randCompPick == "paper") {
         setTimeout(()=>{
             addScore(1);
             gamePickResult.classList.add('active');  
-        }, 3000);
+        }, 1500);
         gameResult.innerHTML = "YOU WIN";
         playerPick.classList.add('effect');
     } else if (selected == "scissors" && randCompPick == "rock") {
         setTimeout(()=>{
             addScore(-1);
             gamePickResult.classList.add('active'); 
-        }, 3000);
+        }, 1500);
         gameResult.innerHTML = "YOU LOSE";
         compPick.classList.add('effect');
     } else if (selected == "rock" && randCompPick == "scissors") {
         setTimeout(()=>{
             addScore(1); 
             gamePickResult.classList.add('active'); 
-        }, 3000);
+        }, 1500);
         gameResult.innerHTML = "YOU WIN";
         playerPick.classList.add('effect');
     } else if (selected == "rock" && randCompPick == "paper") {
         setTimeout(()=>{
             addScore(-1);  
             gamePickResult.classList.add('active');
-        }, 3000);
+        }, 1500);
         gameResult.innerHTML = "YOU LOSE";
         compPick.classList.add('effect');
     } else if (selected == "paper" && randCompPick == "rock") {
         setTimeout(()=>{
             addScore(1);  
             gamePickResult.classList.add('active');
-        }, 3000);
+        }, 1500);
         gameResult.innerHTML = "YOU WIN";
         playerPick.classList.add('effect');
     }
